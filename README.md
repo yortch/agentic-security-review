@@ -1,6 +1,29 @@
-# Agentic Security Review Demo
+# Agentic Security Review Plugin
 
-This repository-level configuration provides five GitHub Copilot custom agents and seven Agent Skills for a staged, defensive source-code security review.
+This repository is a [GitHub Copilot CLI plugin](https://docs.github.com/en/copilot/concepts/agents/about-plugins) that provides five custom agents and seven Agent Skills for a staged, defensive source-code security review.
+
+```text
+plugin/
+├── plugin.json           # Plugin manifest
+├── agents/                # *.agent.md custom agents
+└── skills/                # Agent Skills (SKILL.md per folder)
+```
+
+## Quickstart
+
+Requires [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli).
+
+Install the plugin directly from this repository:
+
+```shell
+copilot plugin install yortch/agentic-security-review:plugin
+```
+
+Then, in an interactive `copilot` session, run the fast single-prompt demo:
+
+**Agent:** `security-orchestrator`
+
+> Demonstrate the complete security-review workflow against `[folder or component]`: map the attack surface, run broad triage, investigate the strongest candidate, validate it independently, and propose a remediation with a regression test. Use safe local testing only and stop before changing code.
 
 ## Demo flow
 
@@ -50,32 +73,7 @@ Run this prompt in parallel against different components.
 
 > Verify the remediation independently. Re-run the relevant security analysis and regression tests, confirm the original attack path is closed, and summarize the finding, evidence, fix, and residual risk.
 
-## Fast single-prompt demo
-
-**Agent:** `security-orchestrator`
-
-> Demonstrate the complete security-review workflow against `[folder or component]`: map the attack surface, run broad triage, investigate the strongest candidate, validate it independently, and propose a remediation with a regression test. Use safe local testing only and stop before changing code.
-
-## Included customization
-
-Custom agents are stored under `.github/agents`.
-
-Agent Skills are stored under `.github/skills`.
-
-## Plugin
-
-This repository also packages the same five custom agents and seven Agent Skills as a [GitHub Copilot CLI plugin](https://docs.github.com/en/copilot/concepts/agents/about-plugins), stored under [`plugin/`](./plugin), so they can be installed into any other repository or shared with a team.
-
-```text
-plugin/
-├── plugin.json           # Plugin manifest
-├── agents/                # *.agent.md versions of the five custom agents
-└── skills/                # The seven Agent Skills (SKILL.md per folder)
-```
-
-### Installing the plugin
-
-Requires [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli).
+## Installing the plugin
 
 **From this GitHub repository (recommended):**
 
