@@ -61,3 +61,59 @@ Run this prompt in parallel against different components.
 Custom agents are stored under `.github/agents`.
 
 Agent Skills are stored under `.github/skills`.
+
+## Plugin
+
+This repository also packages the same five custom agents and seven Agent Skills as a [GitHub Copilot CLI plugin](https://docs.github.com/en/copilot/concepts/agents/about-plugins), stored under [`plugin/`](./plugin), so they can be installed into any other repository or shared with a team.
+
+```text
+plugin/
+├── plugin.json           # Plugin manifest
+├── agents/                # *.agent.md versions of the five custom agents
+└── skills/                # The seven Agent Skills (SKILL.md per folder)
+```
+
+### Installing the plugin
+
+Requires [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli).
+
+**From this GitHub repository (recommended):**
+
+```shell
+copilot plugin install yortch/agentic-security-review:plugin
+```
+
+**From a local clone:**
+
+```shell
+git clone https://github.com/yortch/agentic-security-review.git
+copilot plugin install ./agentic-security-review/plugin
+```
+
+After installing, verify the plugin loaded:
+
+```shell
+copilot plugin list
+```
+
+Or, inside an interactive `copilot` session:
+
+```text
+/plugin list
+/agent            # confirm the five agents are available
+/skills list      # confirm the seven skills are available
+```
+
+To pick up changes after re-cloning or editing a local copy, reinstall with the same command. To remove the plugin:
+
+```shell
+copilot plugin uninstall agentic-security-review
+```
+
+You can also install the plugin declaratively for a repository by adding it to `enabledPlugins` in `.github/copilot/settings.json`, or for yourself across all repositories by adding it to `~/.copilot/settings.json`:
+
+```json
+{
+  "enabledPlugins": ["yortch/agentic-security-review:plugin"]
+}
+```

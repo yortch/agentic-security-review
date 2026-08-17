@@ -1,0 +1,13 @@
+{
+  "name": "agentic-security-review",
+  "description": "Staged, defensive source-code security review workflow: repository mapping, broad vulnerability hunting, independent adversarial validation, safe local proving, and minimal remediation.",
+  "version": "1.0.0",
+  "author": {
+    "name": "yortch"
+  },
+  "repository": "https://github.com/yortch/agentic-security-review",
+  "license": "MIT",
+  "keywords": ["security", "code-review", "vulnerability", "codeql", "remediation"],
+  "agents": "agents/",
+  "skills": ["skills/"]
+}
